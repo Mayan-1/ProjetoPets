@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">app</string>
     <string name="text_cadastro">Crie uma conta clicando aqui</string>
+    <string name="txt_denuncia">Denuncie Aqui!</string>
+    <string name="edt_tipo">Tipo...</string>
+    <string name="edt_endereco">Endereço...</string>
+    <string name="edt_descricao">Descrição...</string>
+    <string name="btn_denuncie">Denuncie</string>
 </resources>
