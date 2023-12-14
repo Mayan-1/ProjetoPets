@@ -23,6 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             />
 
         <View
@@ -97,7 +98,8 @@
             app:layout_constraintStart_toStartOf="@id/view_edits_text"
             app:layout_constraintTop_toBottomOf="@id/edt_endereco"
             android:layout_marginTop="20dp"
-            android:hint="@string/btn_denuncie"
+            android:text="@string/btn_denuncie"
+            android:textColor="@color/black"
             style="@style/Button"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>

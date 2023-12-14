@@ -6,4 +6,12 @@
     <string name="edt_endereco">Endereço...</string>
     <string name="edt_descricao">Descrição...</string>
     <string name="btn_denuncie">Denuncie</string>
+    <string name="txt_home">Home</string>
+    <string name="btn_dog">Cachorros</string>
+    <string name="btn_cat">Gatos</string>
+    <string name="btn_outros">Outros</string>
+    <string name="txt_boas_vindas">Seja bem vindo!</string>
+    <string name="img_avatar">Avatar de usuário</string>
+    <string name="evento_adocao">Imagem informado sobre data de evento para adoção</string>
+    <string name="denuncias">Denuncias:</string>
 </resources>
