@@ -34,7 +34,7 @@ public class VerDenuncias extends AppCompatActivity {
         setContentView(R.layout.activity_ver_denuncias);
         rv = findViewById(R.id.rvDenuncias);
 
-        database = FirebaseDatabase.getInstance().getReference("Denuncias");
+        database = FirebaseDatabase.getInstance().getReference("denuncias");
         rv.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(VerDenuncias.this, LinearLayoutManager.HORIZONTAL, false);
         rv.setLayoutManager(linearLayoutManager);

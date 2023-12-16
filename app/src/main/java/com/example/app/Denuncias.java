@@ -1,10 +1,19 @@
 package com.example.app;
 
+import java.util.Date;
+
 public class Denuncias {
 
-    String tipo, descricao, endereco;
+    private String tipo, descricao, endereco;
 
+    public Denuncias() {
+    }
 
+    public Denuncias(String tipo, String descricao, String endereco){
+        this.tipo = tipo;
+        this.descricao = descricao;
+        this.endereco = endereco;
+    }
     public String getTipo() {
         return tipo;
     }
@@ -16,4 +25,6 @@ public class Denuncias {
     public String getEndereco() {
         return endereco;
     }
+
+
 }

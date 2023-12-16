@@ -6,6 +6,7 @@
     <string name="edt_tipo">Tipo...</string>
     <string name="edt_endereco">Endereço...</string>
     <string name="edt_descricao">Descrição...</string>
+    <string name="edt_data">Data...</string>
     <string name="txt_home">Home</string>
     <string name="txt_boas_vindas">Seja bem vindo!!!</string>
     <string name="evento_adocao">Imagem que informa sobre evento próximo</string>

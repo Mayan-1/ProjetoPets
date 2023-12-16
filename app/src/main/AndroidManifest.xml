@@ -18,13 +18,13 @@
             android:name=".TelaCriarDenuncias"
             android:exported="false"/>
         <activity
-            android:name=".Tela_Login"
+            android:name=".VerDenuncias"
             android:exported="false"/>
         <activity
             android:name=".Tela_cadastro"
             android:exported="false" />
         <activity
-            android:name=".VerDenuncias"
+            android:name=".Tela_Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
