@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,16 @@ public class Tela_Login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String senha = edtSenha.getText().toString();
-                signIn(email, senha);
+                if (email.isEmpty() || senha.isEmpty()){
+                    Snackbar sb = Snackbar.make(view, "Preencha todos os campos", Snackbar.LENGTH_SHORT);
+                    sb.setBackgroundTint(Color.RED);
+                    sb.setTextColor(Color.WHITE);
+                    sb.show();
+
+                }else {
+                    signIn(email, senha);
+                }
+
             }
         });
 
@@ -60,7 +70,6 @@ public class Tela_Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Login bem-sucedido, redirecione para a próxima atividade ou realize outras ações
                             FirebaseUser user = auth.getCurrentUser();
                             startActivity(new Intent(Tela_Login.this, VerDenuncias.class));
 

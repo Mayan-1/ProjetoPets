@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Tela_cadastro extends AppCompatActivity {
     private EditText email,senha,nome;
 
@@ -58,6 +61,9 @@ public class Tela_cadastro extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Snackbar sb=
                             Snackbar.make(v,"Usuario cadastrado",Snackbar.LENGTH_SHORT);
+                    sb.setBackgroundTint(Color.WHITE);
+                    sb.setTextColor(Color.WHITE);
+                    sb.show();
                 } else {
                     String erro;
                     try {
@@ -73,8 +79,8 @@ public class Tela_cadastro extends AppCompatActivity {
                     }
                     Snackbar sb =
                             Snackbar.make(v, erro,Snackbar.LENGTH_SHORT);
-                    sb.setBackgroundTint(Color.WHITE);
-                    sb.setTextColor(Color.BLACK);
+                    sb.setBackgroundTint(Color.RED);
+                    sb.setTextColor(Color.WHITE);
                     sb.show();
 
                 }
