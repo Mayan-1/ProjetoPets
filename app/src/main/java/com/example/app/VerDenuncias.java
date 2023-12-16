@@ -5,18 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class VerDenuncias extends AppCompatActivity {
 
     RecyclerView rv;
-    ArrayList<String> dataSource;
+    DatabaseReference database;
+    ArrayList<Denuncias> list   ;
     LinearLayoutManager linearLayoutManager;
     MyRvAdapter myRvAdapter;
     @Override
@@ -25,51 +34,79 @@ public class VerDenuncias extends AppCompatActivity {
         setContentView(R.layout.activity_ver_denuncias);
         rv = findViewById(R.id.rvDenuncias);
 
-        dataSource = new ArrayList<>();
-        dataSource.add("Olá");
-        dataSource.add("Mundo");
-        dataSource.add("Bem");
-        dataSource.add("Vindo");
-        dataSource.add("Ao");
-        dataSource.add("Aplicativo");
-
+        database = FirebaseDatabase.getInstance().getReference("Denuncias");
+        rv.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(VerDenuncias.this, LinearLayoutManager.HORIZONTAL, false);
-        myRvAdapter = new MyRvAdapter(dataSource);
         rv.setLayoutManager(linearLayoutManager);
+
+
+        list = new ArrayList<>();
+        myRvAdapter = new MyRvAdapter(this, list);
         rv.setAdapter(myRvAdapter);
 
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    Denuncias denuncias = dataSnapshot.getValue(Denuncias.class);
+
+                    list.add(denuncias);
+                }
+
+
+                Log.d("TAG", "Tamanho da lista: " + list.size());
+
+                myRvAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("TAG", "Erro ao obter dados do Firebase: " + error.getMessage());
+            }
+        });
 
     }
 
     class MyRvAdapter extends RecyclerView.Adapter<MyRvAdapter.MyHolder>{
 
-        ArrayList<String> data;
-        public MyRvAdapter(ArrayList<String> data) {
-            this.data = data;
+        Context context;
+        ArrayList<Denuncias> list;
+        public MyRvAdapter(Context context, ArrayList<Denuncias> list) {
+            this.context = context;
+            this.list = list;
         }
 
         @NonNull
         @Override
         public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(VerDenuncias.this).inflate(R.layout.item_denuncia, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.item_denuncia, parent, false);
             return new MyHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-            holder.tvDescription.setText(data.get(position));
+            Denuncias denuncias = list.get(position);
+            holder.tipo.setText(denuncias.getTipo());
+            holder.descricao.setText(denuncias.getDescricao());
+            holder.endereco.setText(denuncias.getEndereco());
         }
 
         @Override
         public int getItemCount() {
-            return data.size();
+            return list.size();
         }
 
         class MyHolder extends RecyclerView.ViewHolder{
-            TextView tvDescription;
+            TextView tipo, descricao, endereco;
             public MyHolder(@NonNull View itemView) {
                 super(itemView);
-                tvDescription = itemView.findViewById(R.id.tvDescription);
+                tipo = itemView.findViewById(R.id.tv_tipo);
+                descricao = itemView.findViewById(R.id.tv_descricao);
+                endereco = itemView.findViewById(R.id.tv_endereco);
+
 
             }
         }
