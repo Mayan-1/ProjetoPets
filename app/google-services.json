@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "139176192336",
+    "project_id": "app-dfec9",
+    "storage_bucket": "app-dfec9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139176192336:android:854eb5b8f73074fa9ee455",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPCTh8k5sJnEcdCsMCjT4aD_NVGZQQEsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
