@@ -46,7 +46,7 @@
     <EditText
         android:id="@+id/edit_nome"
         style="@style/edit_text"
-        android:hint="Senha"
+        android:hint="Nome"
         android:drawableRight="@drawable/baseline_email_24"
         app:layout_constraintStart_toStartOf="@id/view"
         app:layout_constraintEnd_toEndOf="@id/view"
@@ -55,6 +55,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cadastrar"
         style="@style/Button"
+        android:onClick="cadastar"
         android:layout_width="204dp"
         android:layout_height="100dp"
         android:text="Cadastrar"
