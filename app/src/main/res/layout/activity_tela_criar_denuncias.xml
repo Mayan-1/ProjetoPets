@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/view_logo"
             app:layout_constraintEnd_toEndOf="@id/view_logo"
@@ -46,23 +46,23 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:id="@+id/topo">
 
         <View
             android:id="@+id/view_edits_text"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
             style="@style/view"
-            android:background="@color/white"
+            android:layout_width="400dp"
+            android:layout_height="275dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/topo"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <EditText
             android:id="@+id/edt_tipo"
             style="@style/edit_text"
@@ -70,9 +70,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:hint="@string/edt_tipo"
-            app:layout_constraintTop_toTopOf="@id/view_edits_text"
             app:layout_constraintStart_toStartOf="@id/view_edits_text"
             app:layout_constraintEnd_toEndOf="@id/view_edits_text"
+            app:layout_constraintTop_toTopOf="@+id/view_edits_text"
+            android:layout_marginTop="80dp"
+
             />
         <EditText
             android:id="@+id/edt_descricao"
@@ -97,31 +99,14 @@
             app:layout_constraintEnd_toEndOf="@id/view_edits_text"
             />
 
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_denuncie"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            app:layout_constraintEnd_toEndOf="@id/view_edits_text"
-            app:layout_constraintStart_toStartOf="@id/view_edits_text"
-            app:layout_constraintTop_toBottomOf="@id/edt_endereco"
-            android:layout_marginTop="20dp"
-            android:text="@string/btn_denuncie"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textAllCaps="false"
-            android:background="@color/pink"
-            android:onClick="denunciar"
-            />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_imagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/view_edits_text"
-            app:layout_constraintStart_toStartOf="@id/view_edits_text"
-            app:layout_constraintTop_toBottomOf="@id/btn_denuncie"
-            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_endereco"
+            android:layout_marginTop="150dp"
             android:text="Anexar Imagem"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -130,49 +115,21 @@
             />
 
 
-
-        <View
-            android:id="@+id/view_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_denuncie"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/btn_denuncie"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:background="@color/pink"
+            android:onClick="denunciar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="70dp"
-            android:background="@color/grey"
-            />
-
-        <ImageView
-            android:id="@+id/img_home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_home"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line"
-            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_imagem"
             />
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line"
-            android:background="@drawable/ic_pencil"
-            android:layout_marginStart="195dp"
-            android:layout_marginTop="10dp"
-            />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_line"
-            android:background="@drawable/ic_person"
-            android:layout_marginStart="348dp"
-            android:layout_marginTop="10dp"
-            />
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

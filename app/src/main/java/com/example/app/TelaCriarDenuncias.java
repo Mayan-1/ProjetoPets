@@ -3,6 +3,7 @@ package com.example.app;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,61 +12,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app.Denuncias;
 import com.example.app.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.InputStream;
+import java.util.UUID;
 
 
 public class TelaCriarDenuncias extends AppCompatActivity {
     private EditText edtTipo, edtDescricao, edtEndereco;
-    private Button btnEscolherImagem;
-
-
-    private static final int PICK_IMAGE_REQUEST = 1;
-    private Uri imagemUri;
-
     private DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_criar_denuncias);
 
-        // Inicialize o Firebase Realtime Database
+        // Inicializando o firebase realtime database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("denuncias");
 
-        // Referencie os EditTexts no layout
+
+
+
+        // Referenciando os EditTexts no layout
         edtTipo = findViewById(R.id.edt_tipo);
         edtDescricao = findViewById(R.id.edt_descricao);
         edtEndereco = findViewById(R.id.edt_endereco);
-        btnEscolherImagem = findViewById(R.id.btn_imagem);
-
-        btnEscolherImagem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                escolherImagem();
-            }
-
-
-        });
     }
-
-    public void escolherImagem() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imagemUri = data.getData();
-        }
-    }
-
-
 
     // Método chamado ao clicar no botão "Denunciar"
     public void denunciar(View view) {
@@ -75,13 +55,13 @@ public class TelaCriarDenuncias extends AppCompatActivity {
         String endereco = edtEndereco.getText().toString();
 
 
-        // Salve os dados no Firebase Realtime Database
+        // Salvando os dados no Firebase Realtime Database
         salvarDenunciaNoFirebase(tipo, descricao, endereco);
     }
 
 
     private void salvarDenunciaNoFirebase(String tipo, String descricao, String endereco) {
-        // Crie um nó "denuncia" no Firebase Realtime Database e salve os dados
+        // Criando um nó "denuncia" no Firebase Realtime Database e salve os dados
         String denunciaId = databaseReference.push().getKey();
 
         Denuncias denuncia = new Denuncias(tipo, descricao, endereco);

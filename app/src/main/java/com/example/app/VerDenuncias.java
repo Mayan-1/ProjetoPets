@@ -6,11 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,11 +32,16 @@ public class VerDenuncias extends AppCompatActivity {
     ArrayList<Denuncias> list   ;
     LinearLayoutManager linearLayoutManager;
     MyRvAdapter myRvAdapter;
+
+    Button btnIrCriacaoDenuncia;
+    ImageView imgIrDicas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_denuncias);
         rv = findViewById(R.id.rvDenuncias);
+        btnIrCriacaoDenuncia = findViewById(R.id.btnIrCriacao);
+        imgIrDicas = findViewById(R.id.imageDicas);
 
         database = FirebaseDatabase.getInstance().getReference("denuncias");
         rv.setHasFixedSize(true);
@@ -110,5 +119,14 @@ public class VerDenuncias extends AppCompatActivity {
 
             }
         }
+    }
+
+    public void irDicas(View v){
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.petz.com.br/blog/cachorros/saude-e-cuidados-cachorros/saude-pet/")));
+    }
+
+    public void irTelaCriacao(View v){
+        Intent intent = new Intent(VerDenuncias.this, TelaCriarDenuncias.class);
+        startActivity(intent);
     }
 }

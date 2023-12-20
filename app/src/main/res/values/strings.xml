@@ -11,4 +11,10 @@
     <string name="txt_boas_vindas">Seja bem vindo!!!</string>
     <string name="evento_adocao">Imagem que informa sobre evento próximo</string>
     <string name="denuncias">Denuncias: </string>
+    <string name="ref_tipo">Tipo:</string>
+    <string name="ref_descricao">Descrição:</string>
+    <string name="ref_endereco">Endereço:</string>
+    <string name="btn_ir_perfil">Ver perfil</string>
+    <string name="btn_criar_denuncia">Criação de denuncias</string>
+    <string name="btn_ver_denuncia">Ver denuncias</string>
 </resources>
