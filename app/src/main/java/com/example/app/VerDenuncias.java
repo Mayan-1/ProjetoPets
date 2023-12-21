@@ -1,11 +1,13 @@
 package com.example.app;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -32,9 +37,11 @@ public class VerDenuncias extends AppCompatActivity {
     ArrayList<Denuncias> list   ;
     LinearLayoutManager linearLayoutManager;
     MyRvAdapter myRvAdapter;
-
+    StorageReference storageReference;
     Button btnIrCriacaoDenuncia;
-    ImageView imgIrDicas;
+    ImageView imgIrDicas, imgDenuncia;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +50,10 @@ public class VerDenuncias extends AppCompatActivity {
         btnIrCriacaoDenuncia = findViewById(R.id.btnIrCriacao);
         imgIrDicas = findViewById(R.id.imageDicas);
 
+
+
         database = FirebaseDatabase.getInstance().getReference("denuncias");
+        storageReference = FirebaseStorage.getInstance().getReference();
         rv.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(VerDenuncias.this, LinearLayoutManager.HORIZONTAL, false);
         rv.setLayoutManager(linearLayoutManager);
@@ -110,6 +120,7 @@ public class VerDenuncias extends AppCompatActivity {
 
         class MyHolder extends RecyclerView.ViewHolder{
             TextView tipo, descricao, endereco;
+            ImageView imgDenuncia;
             public MyHolder(@NonNull View itemView) {
                 super(itemView);
                 tipo = itemView.findViewById(R.id.tv_tipo);
@@ -118,7 +129,15 @@ public class VerDenuncias extends AppCompatActivity {
 
 
             }
+
+
+
         }
+
+
+
+
+
     }
 
     public void irDicas(View v){

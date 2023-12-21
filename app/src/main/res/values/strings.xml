@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">app</string>
+    <string name="app_name">Strays</string>
     <string name="text_cadastro">Crie uma conta clicando aqui</string>
     <string name="btn_denuncie">Denuncie</string>
     <string name="txt_denuncia">Denuncie aqui!</string>

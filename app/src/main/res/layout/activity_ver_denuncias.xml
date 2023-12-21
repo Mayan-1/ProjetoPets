@@ -77,20 +77,10 @@
         android:id="@+id/rvDenuncias"
         android:scrollbars="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/IrPerfil"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="@string/btn_ir_perfil"
-        android:backgroundTint="@color/yellow"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
+        android:clickable="true"/>
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnIrCriacao"
@@ -100,8 +90,9 @@
         android:layout_gravity="center"
         android:text="@string/btn_criar_denuncia"
         android:textAllCaps="false"
+        style="@style/Button_dois"
         android:textSize="16sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/yellow"
         android:textColor="@color/black"
         />
