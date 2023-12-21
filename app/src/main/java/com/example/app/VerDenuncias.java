@@ -70,7 +70,7 @@ public class VerDenuncias extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Denuncias denuncias = dataSnapshot.getValue(Denuncias.class);
-
+                    denuncias.setKey(dataSnapshot.getKey());
                     list.add(denuncias);
                 }
 
@@ -102,7 +102,8 @@ public class VerDenuncias extends AppCompatActivity {
         @Override
         public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(context).inflate(R.layout.item_denuncia, parent, false);
-            return new MyHolder(view);
+            MyHolder holder = new MyHolder(view, parent.getContext());
+            return holder;
         }
 
         @Override
@@ -118,15 +119,30 @@ public class VerDenuncias extends AppCompatActivity {
             return list.size();
         }
 
-        class MyHolder extends RecyclerView.ViewHolder{
+        class MyHolder extends RecyclerView.ViewHolder  {
             TextView tipo, descricao, endereco;
             ImageView imgDenuncia;
-            public MyHolder(@NonNull View itemView) {
+            public MyHolder(@NonNull View itemView, final Context context) {
                 super(itemView);
                 tipo = itemView.findViewById(R.id.tv_tipo);
                 descricao = itemView.findViewById(R.id.tv_descricao);
                 endereco = itemView.findViewById(R.id.tv_endereco);
 
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (list.size() > 0){
+
+                            Denuncias denuncias = list.get(getLayoutPosition());
+                            Intent intent = new Intent(context, TelaAdocao.class);
+                            intent.putExtra("DENUNCIA", denuncias);
+                            ((AppCompatActivity)context).startActivityForResult(intent, 0);
+
+                        }
+
+                    }
+                });
 
             }
 

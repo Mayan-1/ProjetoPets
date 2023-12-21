@@ -73,11 +73,8 @@ public class Tela_Login extends AppCompatActivity {
                             FirebaseUser user = auth.getCurrentUser();
                             startActivity(new Intent(Tela_Login.this, VerDenuncias.class));
 
-                        } else {
-                            // Se o login falhar, exiba uma mensagem para o usuário
-                            // Você pode personalizar as mensagens de erro conforme necessário
-                            // Exemplo: Toast.makeText(LoginActivity.this, "Falha na autenticação.", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
         }

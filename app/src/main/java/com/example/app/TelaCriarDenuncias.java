@@ -1,6 +1,7 @@
 package com.example.app;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -59,29 +60,6 @@ public class TelaCriarDenuncias extends AppCompatActivity {
 
     }
 
-    private void uploadImagem() {
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.ENGLISH);
-        Date now = new Date();
-        String filename = format.format(now);
-        storageReference = FirebaseStorage.getInstance().getReference("images/"+filename);
-
-        storageReference.putFile(imagemUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(TelaCriarDenuncias.this, "Denuncia criada com sucesso", Toast.LENGTH_SHORT).show();
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(TelaCriarDenuncias.this, "Algo deu errado!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-
-
 
     // Método chamado ao clicar no botão "Denunciar"
     public void denunciar(View view) {
@@ -93,7 +71,10 @@ public class TelaCriarDenuncias extends AppCompatActivity {
 
         // Salvando os dados no Firebase Realtime Database
         salvarDenunciaNoFirebase(tipo, descricao, endereco);
-        uploadImagem();
+        Snackbar sb = Snackbar.make(view, "Obrigado por nos informar sobre este animalzinho :)", Snackbar.LENGTH_SHORT);
+        sb.setBackgroundTint(Color.GREEN);
+        sb.setTextColor(Color.WHITE);
+        sb.show();
     }
 
 

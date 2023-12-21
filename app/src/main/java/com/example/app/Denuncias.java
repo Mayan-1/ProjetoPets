@@ -2,11 +2,12 @@ package com.example.app;
 
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Denuncias {
+public class Denuncias implements Serializable {
 
-    private String tipo, descricao, endereco, imgUrl;
+    private String tipo, descricao, endereco, key;
 
     public Denuncias() {
     }
@@ -17,12 +18,6 @@ public class Denuncias {
         this.endereco = endereco;
     }
 
-    public Denuncias(String tipo, String descricao, String endereco, String imgUrl){
-        this.tipo = tipo;
-        this.descricao = descricao;
-        this.endereco = endereco;
-        this.imgUrl = imgUrl;
-    }
     public String getTipo() {
         return tipo;
     }
@@ -35,7 +30,11 @@ public class Denuncias {
         return endereco;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

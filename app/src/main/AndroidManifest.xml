@@ -16,6 +16,9 @@
         android:theme="@style/Theme.App"
         tools:targetApi="31">
         <activity
+            android:name=".TelaAdocao"
+            android:exported="false" />
+        <activity
             android:name=".TelaCriarDenuncias"
             android:exported="false" />
         <activity

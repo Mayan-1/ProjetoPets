@@ -59,8 +59,7 @@ public class Tela_cadastro extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Snackbar sb=
-                            Snackbar.make(v,"Usuario cadastrado",Snackbar.LENGTH_SHORT);
+                    Snackbar sb= Snackbar.make(v,"Usuario cadastrado",Snackbar.LENGTH_SHORT);
                     sb.setBackgroundTint(Color.WHITE);
                     sb.setTextColor(Color.WHITE);
                     sb.show();
